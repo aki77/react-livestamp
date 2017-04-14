@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export default class Livestamp extends Component {
   constructor(props) {
@@ -76,10 +77,10 @@ export default class Livestamp extends Component {
 }
 
 Livestamp.propTypes = {
-  end: React.PropTypes.any.isRequired,
+  end: PropTypes.any.isRequired,
   interval: PropTypes.number,
-  renderStamp: React.PropTypes.func,
-  renderExpired: React.PropTypes.func
+  renderStamp: PropTypes.func,
+  renderExpired: PropTypes.func
 };
 
 Livestamp.defaultProps = {

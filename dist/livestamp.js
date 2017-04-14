@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -6,9 +6,13 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = require("react");
+var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -25,8 +29,7 @@ var Livestamp = function (_Component) {
     _classCallCheck(this, Livestamp);
 
     // STATE
-
-    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Livestamp).call(this, props));
+    var _this = _possibleConstructorReturn(this, (Livestamp.__proto__ || Object.getPrototypeOf(Livestamp)).call(this, props));
 
     _this.state = {
       days: 0,
@@ -50,7 +53,7 @@ var Livestamp = function (_Component) {
   }
 
   _createClass(Livestamp, [{
-    key: "componentDidMount",
+    key: 'componentDidMount',
     value: function componentDidMount() {
 
       // Mount initialize second before.
@@ -60,7 +63,7 @@ var Livestamp = function (_Component) {
       this.timer = setInterval(this.stamp, this.props.interval);
     }
   }, {
-    key: "stamp",
+    key: 'stamp',
     value: function stamp() {
       var now = new Date();
       var distance = this.end_date - now;
@@ -84,18 +87,18 @@ var Livestamp = function (_Component) {
       });
     }
   }, {
-    key: "componentWillUnmount",
+    key: 'componentWillUnmount',
     value: function componentWillUnmount() {
 
       // Clear distance interval
       clearInterval(this.timer);
     }
   }, {
-    key: "render",
+    key: 'render',
     value: function render() {
-      var _props = this.props;
-      var renderStamp = _props.renderStamp;
-      var renderExpired = _props.renderExpired;
+      var _props = this.props,
+          renderStamp = _props.renderStamp,
+          renderExpired = _props.renderExpired;
 
       // if end date expired then render expiredRender.
 
@@ -114,42 +117,42 @@ exports.default = Livestamp;
 
 
 Livestamp.propTypes = {
-  end: _react2.default.PropTypes.any.isRequired,
-  interval: _react.PropTypes.number,
-  renderStamp: _react2.default.PropTypes.func,
-  renderExpired: _react2.default.PropTypes.func
+  end: _propTypes2.default.any.isRequired,
+  interval: _propTypes2.default.number,
+  renderStamp: _propTypes2.default.func,
+  renderExpired: _propTypes2.default.func
 };
 
 Livestamp.defaultProps = {
   interval: 1000, // 1 second
   renderStamp: function renderStamp(_ref) {
-    var days = _ref.days;
-    var hours = _ref.hours;
-    var minutes = _ref.minutes;
-    var seconds = _ref.seconds;
+    var days = _ref.days,
+        hours = _ref.hours,
+        minutes = _ref.minutes,
+        seconds = _ref.seconds;
 
     return _react2.default.createElement(
-      "div",
-      { className: "react-livestamp" },
+      'div',
+      { className: 'react-livestamp' },
       _react2.default.createElement(
-        "b",
+        'b',
         null,
         days,
-        " g ",
+        ' g ',
         hours,
-        " s ",
+        ' s ',
         minutes,
-        " dk ",
+        ' dk ',
         seconds,
-        " sn"
+        ' sn'
       )
     );
   },
   renderExpired: function renderExpired() {
     return _react2.default.createElement(
-      "div",
-      { className: "react-livestamp" },
-      "Expired Datetime."
+      'div',
+      { className: 'react-livestamp' },
+      'Expired Datetime.'
     );
   }
 };
